@@ -5,25 +5,12 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import data from './data.json';
-const Key_Contacts = 'ContactsLocalList';
+
 export class App extends React.Component {
   state = {
     contacts: data,
     filter: '',
   };
-
-  componentDidMount() {
-    const stateLocal = JSON.parse(localStorage.getItem(Key_Contacts));
-    if (stateLocal) {
-      this.setState({ contacts: stateLocal });
-    }
-  }
-
-  componentDidUpdate(_, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem(Key_Contacts, JSON.stringify(this.state.contacts));
-    }
-  }
 
   handleFilterChange = e => {
     this.setState({ filter: e.target.value });
@@ -67,7 +54,7 @@ export class App extends React.Component {
         <Section>
           <Title>Phonebook</Title>
           <ContactForm onAddContact={this.handleAddContact} />
-        </Section>
+        </Section>{' '}
         <Section>
           <Title>Contacts</Title>
           <Filter value={filter} Input={this.handleFilterChange} />
