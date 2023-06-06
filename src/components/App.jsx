@@ -67,7 +67,7 @@ export class App extends React.Component {
         <Section>
           <Title>Phonebook</Title>
           <ContactForm onAddContact={this.handleAddContact} />
-        </Section>{' '}
+        </Section>
         <Section>
           <Title>Contacts</Title>
           <Filter value={filter} Input={this.handleFilterChange} />
